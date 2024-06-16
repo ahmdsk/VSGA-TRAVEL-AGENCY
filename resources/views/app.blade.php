@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>Pacific - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Jalankuy - Cari Tempat Bobo Nyaman Secara Online</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -28,7 +28,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Pacific<span>Travel Agency</span></a>
+            <a class="navbar-brand" href="{{ route('landing-page.index') }}">Jalankuy<span>Travel Agency</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
@@ -36,12 +36,14 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="destination.html" class="nav-link">Destination</a></li>
-                    <li class="nav-item"><a href="hotel.html" class="nav-link">Hotel</a></li>
-                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item active"><a href="{{ route('landing-page.index') }}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item"><a href="{{ route('landing-page.index') }}#about" class="nav-link">Tentang</a>
+                    </li>
+                    <li class="nav-item"><a href="{{ route('landing-page.index') }}#destination"
+                            class="nav-link">Destinasi</a></li>
+                    <li class="nav-item"><a href="{{ route('landing-page.index') }}#contact" class="nav-link">Hubungi
+                            Kami</a></li>
                 </ul>
             </div>
         </div>
@@ -53,11 +55,11 @@
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
                 <div class="col-md-7 ftco-animate">
-                    <span class="subheading">Welcome to Pacific</span>
-                    <h1 class="mb-4">Discover Your Favorite Place with Us</h1>
-                    <p class="caps">Travel to the any corner of the world, without going around in circles</p>
+                    <span class="subheading">Selamat datang di Jalankuy</span>
+                    <h1 class="mb-4">Temukan Tempat Favorit Anda bersama Kami</h1>
+                    <p class="caps">Bepergian ke sudut mana pun di dunia, tanpa berputar-putar</p>
                 </div>
-                <a href="https://vimeo.com/45830194"
+                <a href="https://vimeo.com/494305035"
                     class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
                     <span class="fa fa-play"></span>
                 </a>
@@ -76,7 +78,7 @@
                                     aria-orientation="vertical">
                                     <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill"
                                         href="#v-pills-1" role="tab" aria-controls="v-pills-1"
-                                        aria-selected="true">Search Tour</a>
+                                        aria-selected="true">Cari Destinasi</a>
 
                                     <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
                                         role="tab" aria-controls="v-pills-2" aria-selected="false">Hotel</a>
@@ -93,60 +95,46 @@
                                             <div class="row no-gutters">
                                                 <div class="col-md d-flex">
                                                     <div class="form-group p-4 border-0">
-                                                        <label for="#">Destination</label>
+                                                        <label for="#">Tujuan</label>
                                                         <div class="form-field">
                                                             <div class="icon"><span class="fa fa-search"></span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                placeholder="Search place">
+                                                                placeholder="Cari tujuan">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md d-flex">
                                                     <div class="form-group p-4">
-                                                        <label for="#">Check-in date</label>
+                                                        <label for="#">Tanggal Check-in</label>
                                                         <div class="form-field">
                                                             <div class="icon"><span class="fa fa-calendar"></span>
                                                             </div>
                                                             <input type="text" class="form-control checkin_date"
-                                                                placeholder="Check In Date">
+                                                                placeholder="Tanggal Check In">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md d-flex">
                                                     <div class="form-group p-4">
-                                                        <label for="#">Check-out date</label>
+                                                        <label for="#">Tanggal Check-out</label>
                                                         <div class="form-field">
                                                             <div class="icon"><span class="fa fa-calendar"></span>
                                                             </div>
                                                             <input type="text" class="form-control checkout_date"
-                                                                placeholder="Check Out Date">
+                                                                placeholder="CTanggal heck Out">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md d-flex">
                                                     <div class="form-group p-4">
-                                                        <label for="#">Price Limit</label>
+                                                        <label for="#">Maks. Harga</label>
                                                         <div class="form-field">
                                                             <div class="select-wrap">
                                                                 <div class="icon"><span
                                                                         class="fa fa-chevron-down"></span></div>
-                                                                <select name="" id=""
+                                                                <select name="" id="tour-price"
                                                                     class="form-control">
-                                                                    <option value="">$100</option>
-                                                                    <option value="">$10,000</option>
-                                                                    <option value="">$50,000</option>
-                                                                    <option value="">$100,000</option>
-                                                                    <option value="">$200,000</option>
-                                                                    <option value="">$300,000</option>
-                                                                    <option value="">$400,000</option>
-                                                                    <option value="">$500,000</option>
-                                                                    <option value="">$600,000</option>
-                                                                    <option value="">$700,000</option>
-                                                                    <option value="">$800,000</option>
-                                                                    <option value="">$900,000</option>
-                                                                    <option value="">$1,000,000</option>
-                                                                    <option value="">$2,000,000</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -168,72 +156,58 @@
                                         aria-labelledby="v-pills-performance-tab">
                                         <form action="#" class="search-property-1">
                                             <div class="row no-gutters">
-                                                <div class="col-lg d-flex">
+                                                <div class="col-md d-flex">
                                                     <div class="form-group p-4 border-0">
-                                                        <label for="#">Destination</label>
+                                                        <label for="#">Tujuan</label>
                                                         <div class="form-field">
                                                             <div class="icon"><span class="fa fa-search"></span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                placeholder="Search place">
+                                                                placeholder="Cari tujuan">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg d-flex">
+                                                <div class="col-md d-flex">
                                                     <div class="form-group p-4">
-                                                        <label for="#">Check-in date</label>
+                                                        <label for="#">Tanggal Check-in</label>
                                                         <div class="form-field">
                                                             <div class="icon"><span class="fa fa-calendar"></span>
                                                             </div>
                                                             <input type="text" class="form-control checkin_date"
-                                                                placeholder="Check In Date">
+                                                                placeholder="Tanggal Check In">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg d-flex">
+                                                <div class="col-md d-flex">
                                                     <div class="form-group p-4">
-                                                        <label for="#">Check-out date</label>
+                                                        <label for="#">Tanggal Check-out</label>
                                                         <div class="form-field">
                                                             <div class="icon"><span class="fa fa-calendar"></span>
                                                             </div>
                                                             <input type="text" class="form-control checkout_date"
-                                                                placeholder="Check Out Date">
+                                                                placeholder="CTanggal heck Out">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg d-flex">
+                                                <div class="col-md d-flex">
                                                     <div class="form-group p-4">
-                                                        <label for="#">Price Limit</label>
+                                                        <label for="#">Maks. Harga</label>
                                                         <div class="form-field">
                                                             <div class="select-wrap">
                                                                 <div class="icon"><span
                                                                         class="fa fa-chevron-down"></span></div>
-                                                                <select name="" id=""
+                                                                <select name="" id="hotel-price"
                                                                     class="form-control">
-                                                                    <option value="">$100</option>
-                                                                    <option value="">$10,000</option>
-                                                                    <option value="">$50,000</option>
-                                                                    <option value="">$100,000</option>
-                                                                    <option value="">$200,000</option>
-                                                                    <option value="">$300,000</option>
-                                                                    <option value="">$400,000</option>
-                                                                    <option value="">$500,000</option>
-                                                                    <option value="">$600,000</option>
-                                                                    <option value="">$700,000</option>
-                                                                    <option value="">$800,000</option>
-                                                                    <option value="">$900,000</option>
-                                                                    <option value="">$1,000,000</option>
-                                                                    <option value="">$2,000,000</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg d-flex">
+                                                <div class="col-md d-flex">
                                                     <div class="form-group d-flex w-100 border-0">
                                                         <div class="form-field w-100 align-items-center d-flex">
                                                             <input type="submit" value="Search"
-                                                                class="align-self-stretch form-control btn btn-primary p-0">
+                                                                class="align-self-stretch form-control btn btn-primary">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -248,21 +222,21 @@
             </div>
     </section>
 
-    <section class="ftco-section services-section">
+    <section class="ftco-section services-section" id="about">
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
                     <div class="w-100">
-                        <span class="subheading">Welcome to Pacific</span>
-                        <h2 class="mb-4">It's time to start your adventure</h2>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.
-                            It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
-                            Semantics, a large language ocean.
-                            A small river named Duden flows by their place and supplies it with the necessary
-                            regelialia.</p>
-                        <p><a href="#" class="btn btn-primary py-3 px-4">Search Destination</a></p>
+                        <span class="subheading">Selamat datang di Jalankuy</span>
+                        <h2 class="mb-4">Saatnya memulai petualangan Anda</h2>
+                        <p>Sebuah sungai kecil bernama Duden mengalir di dekat tempat mereka dan memasok regelialia yang
+                            diperlukan. Ini adalah negara surgawi, di mana bagian-bagian kalimat yang terpanggang
+                            terbang ke mulut Anda.</p>
+                        <p>Jauh sekali, di balik kata pegunungan, jauh dari negeri Vokalia dan Konsonantia, hiduplah
+                            teks-teks buta. Terpisah, mereka tinggal di Bookmarksgrove tepat di pantai Semantics, lautan
+                            bahasa yang luas. Sebuah sungai kecil bernama Duden mengalir di dekat tempat mereka dan
+                            memasok regelialia yang diperlukan.</p>
+                        <p><a href="#" class="btn btn-primary py-3 px-4">Cari Destinasi</a></p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -274,7 +248,8 @@
                                         class="flaticon-paragliding"></span></div>
                                 <div class="media-body">
                                     <h3 class="heading mb-3">Activities</h3>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary
+                                    <p>Sebuah sungai kecil bernama Duden mengalir di dekat tempat mereka dan memasok
+                                        kebutuhannya
                                     </p>
                                 </div>
                             </div>
@@ -286,7 +261,8 @@
                                         class="flaticon-route"></span></div>
                                 <div class="media-body">
                                     <h3 class="heading mb-3">Travel Arrangements</h3>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary
+                                    <p>Sebuah sungai kecil bernama Duden mengalir di dekat tempat mereka dan memasok
+                                        kebutuhannya
                                     </p>
                                 </div>
                             </div>
@@ -298,7 +274,8 @@
                                         class="flaticon-tour-guide"></span></div>
                                 <div class="media-body">
                                     <h3 class="heading mb-3">Private Guide</h3>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary
+                                    <p>Sebuah sungai kecil bernama Duden mengalir di dekat tempat mereka dan memasok
+                                        kebutuhannya
                                     </p>
                                 </div>
                             </div>
@@ -310,7 +287,8 @@
                                         class="flaticon-map"></span></div>
                                 <div class="media-body">
                                     <h3 class="heading mb-3">Location Manager</h3>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary
+                                    <p>Sebuah sungai kecil bernama Duden mengalir di dekat tempat mereka dan memasok
+                                        kebutuhannya
                                     </p>
                                 </div>
                             </div>
@@ -321,87 +299,19 @@
         </div>
     </section>
 
-    <section class="ftco-section img ftco-select-destination" style="background-image: url('{{ asset('template/images/bg_3.jpg') }}');">
+    <section class="ftco-section" id="destination">
         <div class="container">
             <div class="row justify-content-center pb-4">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Pacific Provide Places</span>
-                    <h2 class="mb-4">Select Your Destination</h2>
-                </div>
-            </div>
-        </div>
-        <div class="container container-2">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="carousel-destination owl-carousel ftco-animate">
-                        <div class="item">
-                            <div class="project-destination">
-                                <a href="#" class="img" style="background-image: url('{{ asset('template/images/place-1.jpg') }}');">
-                                    <div class="text">
-                                        <h3>Philippines</h3>
-                                        <span>8 Tours</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="project-destination">
-                                <a href="#" class="img" style="background-image: url('{{ asset('template/images/place-2.jpg') }}');">
-                                    <div class="text">
-                                        <h3>Canada</h3>
-                                        <span>2 Tours</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="project-destination">
-                                <a href="#" class="img" style="background-image: url('{{ asset('template/images/place-3.jpg') }}');">
-                                    <div class="text">
-                                        <h3>Thailand</h3>
-                                        <span>5 Tours</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="project-destination">
-                                <a href="#" class="img" style="background-image: url('{{ asset('template/images/place-4.jpg') }}');">
-                                    <div class="text">
-                                        <h3>Autralia</h3>
-                                        <span>5 Tours</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="project-destination">
-                                <a href="#" class="img" style="background-image: url('{{ asset('template/images/place-5.jpg') }}');">
-                                    <div class="text">
-                                        <h3>Greece</h3>
-                                        <span>7 Tours</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center pb-4">
-                <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Destination</span>
-                    <h2 class="mb-4">Tour Destination</h2>
+                    <span class="subheading">Destinasi</span>
+                    <h2 class="mb-4">Tujuan Destinasi</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 ftco-animate">
                     <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url('{{ asset('template/images/destination-1.jpg') }}');">
+                        <a href="#" class="img"
+                            style="background-image: url('{{ asset('template/images/destination-1.jpg') }}');">
                             <span class="price">$550/person</span>
                         </a>
                         <div class="text p-4">
@@ -418,7 +328,8 @@
                 </div>
                 <div class="col-md-4 ftco-animate">
                     <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url('{{ asset('template/images/destination-2.jpg') }}');">
+                        <a href="#" class="img"
+                            style="background-image: url('{{ asset('template/images/destination-2.jpg') }}');">
                             <span class="price">$550/person</span>
                         </a>
                         <div class="text p-4">
@@ -435,7 +346,8 @@
                 </div>
                 <div class="col-md-4 ftco-animate">
                     <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url('{{ asset('template/images/destination-3.jpg') }}');">
+                        <a href="#" class="img"
+                            style="background-image: url('{{ asset('template/images/destination-3.jpg') }}');">
                             <span class="price">$550/person</span>
                         </a>
                         <div class="text p-4">
@@ -453,7 +365,8 @@
 
                 <div class="col-md-4 ftco-animate">
                     <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url('{{ asset('template/images/destination-4.jpg') }}');">
+                        <a href="#" class="img"
+                            style="background-image: url('{{ asset('template/images/destination-4.jpg') }}');">
                             <span class="price">$550/person</span>
                         </a>
                         <div class="text p-4">
@@ -470,7 +383,8 @@
                 </div>
                 <div class="col-md-4 ftco-animate">
                     <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url('{{ asset('template/images/destination-5.jpg') }}');">
+                        <a href="#" class="img"
+                            style="background-image: url('{{ asset('template/images/destination-5.jpg') }}');">
                             <span class="price">$550/person</span>
                         </a>
                         <div class="text p-4">
@@ -487,7 +401,8 @@
                 </div>
                 <div class="col-md-4 ftco-animate">
                     <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url('{{ asset('template/images/destination-6.jpg') }}');">
+                        <a href="#" class="img"
+                            style="background-image: url('{{ asset('template/images/destination-6.jpg') }}');">
                             <span class="price">$550/person</span>
                         </a>
                         <div class="text p-4">
@@ -506,281 +421,31 @@
         </div>
     </section>
 
-    <section class="ftco-section ftco-about img"style="background-image: url('{{ asset('template/images/bg_4.jpg') }}');">
-        <div class="overlay"></div>
-        <div class="container py-md-5">
-            <div class="row py-md-5">
-                <div class="col-md d-flex align-items-center justify-content-center">
-                    <a href="https://vimeo.com/45830194"
-                        class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
-                        <span class="fa fa-play"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section ftco-about ftco-no-pt img">
-        <div class="container">
-            <div class="row d-flex">
-                <div class="col-md-12 about-intro">
-                    <div class="row">
-                        <div class="col-md-6 d-flex align-items-stretch">
-                            <div class="img d-flex w-100 align-items-center justify-content-center"
-                                style="background-image:url('{{ asset('template/images/about-1.jpg') }}');">
-                            </div>
-                        </div>
-                        <div class="col-md-6 pl-md-5 py-5">
-                            <div class="row justify-content-start pb-3">
-                                <div class="col-md-12 heading-section ftco-animate">
-                                    <span class="subheading">About Us</span>
-                                    <h2 class="mb-4">Make Your Tour Memorable and Safe With Us</h2>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-                                        right at the coast of the Semantics, a large language ocean.</p>
-                                    <p><a href="#" class="btn btn-primary">Book Your Destination</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section testimony-section bg-bottom" style="background-image: url('{{ asset('template/images/bg_1.jpg') }}');">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row justify-content-center pb-4">
-                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                    <span class="subheading">Testimonial</span>
-                    <h2 class="mb-4">Tourist Feedback</h2>
-                </div>
-            </div>
-            <div class="row ftco-animate">
-                <div class="col-md-12">
-                    <div class="carousel-testimony owl-carousel">
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url('{{ asset('template/images/person_1.jpg') }}')">
-                                        </div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url('{{ asset('template/images/person_2.jpg') }}')">
-                                        </div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url('{{ asset('template/images/person_3.jpg') }}')">
-                                        </div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url('{{ asset('template/images/person_1.jpg') }}')">
-                                        </div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url('{{ asset('template/images/person_2.jpg') }}')">
-                                        </div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center pb-4">
-                <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Our Blog</span>
-                    <h2 class="mb-4">Recent Post</h2>
-                </div>
-            </div>
-            <div class="row d-flex">
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry justify-content-end">
-                        <a href="blog-single.html" class="block-20"
-                            style="background-image: url('{{ asset('template/images/image_1.jpg') }}');">
-                        </a>
-                        <div class="text">
-                            <div class="d-flex align-items-center mb-4 topp">
-                                <div class="one">
-                                    <span class="day">11</span>
-                                </div>
-                                <div class="two">
-                                    <span class="yr">2020</span>
-                                    <span class="mos">September</span>
-                                </div>
-                            </div>
-                            <h3 class="heading"><a href="#">Most Popular Place In This World</a></h3>
-                            <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-                            <p><a href="#" class="btn btn-primary">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry justify-content-end">
-                        <a href="blog-single.html" class="block-20"
-                            style="background-image: url('{{ asset('template/images/image_2.jpg') }}');">
-                        </a>
-                        <div class="text">
-                            <div class="d-flex align-items-center mb-4 topp">
-                                <div class="one">
-                                    <span class="day">11</span>
-                                </div>
-                                <div class="two">
-                                    <span class="yr">2020</span>
-                                    <span class="mos">September</span>
-                                </div>
-                            </div>
-                            <h3 class="heading"><a href="#">Most Popular Place In This World</a></h3>
-                            <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-                            <p><a href="#" class="btn btn-primary">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20"
-                            style="background-image: url('{{ asset('template/images/image_3.jpg') }}');">
-                        </a>
-                        <div class="text">
-                            <div class="d-flex align-items-center mb-4 topp">
-                                <div class="one">
-                                    <span class="day">11</span>
-                                </div>
-                                <div class="two">
-                                    <span class="yr">2020</span>
-                                    <span class="mos">September</span>
-                                </div>
-                            </div>
-                            <h3 class="heading"><a href="#">Most Popular Place In This World</a></h3>
-                            <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-                            <p><a href="#" class="btn btn-primary">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="ftco-intro ftco-section ftco-no-pt">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 text-center">
                     <div class="img" style="background-image: url('{{ asset('template/images/bg_2.jpg') }}');">
                         <div class="overlay"></div>
-                        <h2>We Are Pacific A Travel Agency</h2>
-                        <p>We can manage your dream building A small river named Duden flows by their place</p>
-                        <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
+                        <h2>Kami Adalah Jalankuy Travel Agency</h2>
+                        <p>Kami dapat mengelola bangunan impian Anda Sebuah sungai kecil bernama Duden mengalir di
+                            tempatnya</p>
+                        <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Minta Penawaran</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url('{{ asset('template/images/bg_3.jpg') }}');">
+    <footer class="ftco-footer bg-bottom ftco-no-pt" id="contact"
+        style="background-image: url('{{ asset('template/images/bg_3.jpg') }}');">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-md pt-5">
                     <div class="ftco-footer-widget pt-md-5 mb-4">
-                        <h2 class="ftco-heading-2">About</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
+                        <h2 class="ftco-heading-2">Tentang</h2>
+                        <p>Jauh sekali, di balik kata pegunungan, jauh dari negeri Vokalia dan Konsonantia, hiduplah
+                            teks-teks buta.</p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
                             <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -790,33 +455,33 @@
                 </div>
                 <div class="col-md pt-5 border-left">
                     <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2">Infromation</h2>
+                        <h2 class="ftco-heading-2">Informasi</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
-                            <li><a href="#" class="py-2 d-block">General Enquiries</a></li>
-                            <li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
-                            <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-                            <li><a href="#" class="py-2 d-block">Refund Policy</a></li>
-                            <li><a href="#" class="py-2 d-block">Call Us</a></li>
+                            <li><a href="#" class="py-2 d-block">Pertanyaan Daring</a></li>
+                            <li><a href="#" class="py-2 d-block">Pertanyaan Umum</a></li>
+                            <li><a href="#" class="py-2 d-block">Ketentuan Pemesanan</a></li>
+                            <li><a href="#" class="py-2 d-block">Privasi dan Kebijakan</a></li>
+                            <li><a href="#" class="py-2 d-block">Kebijakan pengembalian</a></li>
+                            <li><a href="#" class="py-2 d-block">Hubungi Kami</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md pt-5 border-left">
                     <div class="ftco-footer-widget pt-md-5 mb-4">
-                        <h2 class="ftco-heading-2">Experience</h2>
+                        <h2 class="ftco-heading-2">Pengalaman</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Adventure</a></li>
-                            <li><a href="#" class="py-2 d-block">Hotel and Restaurant</a></li>
-                            <li><a href="#" class="py-2 d-block">Beach</a></li>
-                            <li><a href="#" class="py-2 d-block">Nature</a></li>
-                            <li><a href="#" class="py-2 d-block">Camping</a></li>
-                            <li><a href="#" class="py-2 d-block">Party</a></li>
+                            <li><a href="#" class="py-2 d-block">Petualangan</a></li>
+                            <li><a href="#" class="py-2 d-block">Hotel dan Restoran</a></li>
+                            <li><a href="#" class="py-2 d-block">Pantai</a></li>
+                            <li><a href="#" class="py-2 d-block">Alam</a></li>
+                            <li><a href="#" class="py-2 d-block">Berkemah</a></li>
+                            <li><a href="#" class="py-2 d-block">Pesta</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md pt-5 border-left">
                     <div class="ftco-footer-widget pt-md-5 mb-4">
-                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <h2 class="ftco-heading-2">Punya pertanyaan?</h2>
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St.
@@ -873,6 +538,35 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="{{ asset('template/js/google-map.js') }}"></script>
     <script src="{{ asset('template/js/main.js') }}"></script>
+
+    <script>
+        const listMaksHarga = [
+            1000000,
+            2000000,
+            3000000,
+            4000000,
+            5000000,
+            6000000,
+            7000000,
+            8000000,
+            9000000,
+            10000000,  
+        ];
+
+        const tourPrice = document.getElementById('tour-price');
+        const hotelPrice = document.getElementById('hotel-price');
+        listMaksHarga.forEach(harga => {
+            const option = document.createElement('option');
+            option.value = harga;
+            option.text = `${new Intl.NumberFormat('ID', {
+                style: 'currency',
+                currency: 'IDR',
+                maximumSignificantDigits: 2
+            }).format(harga)}`;
+            tourPrice.appendChild(option);
+            hotelPrice.appendChild(option.cloneNode(true));
+        });
+    </script>
 
 </body>
 
