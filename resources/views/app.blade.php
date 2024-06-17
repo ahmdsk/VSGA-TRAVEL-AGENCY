@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>Jalankuy - Cari Tempat Bobo Nyaman Secara Online</title>
+    <title>Jalankuy - Cari Kemudahan Liburan Bersama Keluarga Dengan Pemesanan Secara Online</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -35,7 +35,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto align-items-xl-center">
                     <li class="nav-item active"><a href="{{ route('landing-page.index') }}" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item"><a href="{{ route('landing-page.index') }}#about" class="nav-link">Tentang</a>
@@ -44,6 +44,26 @@
                             class="nav-link">Destinasi</a></li>
                     <li class="nav-item"><a href="{{ route('landing-page.index') }}#contact" class="nav-link">Hubungi
                             Kami</a></li>
+                    @auth
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-md btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    {{ auth()->user()->name }}
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Keluar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    @else
+                        <li class="nav-item"><a href="{{ route('login') }}"
+                                class="btn btn-md btn-primary">Masuk</a></li>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -502,9 +522,11 @@
                         Copyright &copy;
                         <script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i
+                        </script> All rights reserved
+                        {{-- | This template is made with  --}}
+                        {{-- <i
                             class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                            target="_blank">Colorlib</a>
+                            target="_blank">Colorlib</a> --}}
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
@@ -535,8 +557,8 @@
     <script src="{{ asset('template/js/jquery.animateNumber.min.js') }}"></script>
     <script src="{{ asset('template/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('template/js/scrollax.min.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="{{ asset('template/js/google-map.js') }}"></script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> --}}
+    {{-- <script src="{{ asset('template/js/google-map.js') }}"></script> --}}
     <script src="{{ asset('template/js/main.js') }}"></script>
 
     <script>
@@ -550,7 +572,7 @@
             7000000,
             8000000,
             9000000,
-            10000000,  
+            10000000,
         ];
 
         const tourPrice = document.getElementById('tour-price');
