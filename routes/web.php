@@ -36,12 +36,12 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/visitor', [VisitorController::class, 'index'])->name('visitor.index');
         Route::post('/visitor', [VisitorController::class, 'store'])->name('visitor.store');
-        Route::post('/visitor/{visitor}', [VisitorController::class, 'update'])->name('visitor.update');
-        Route::post('/visitor/{visitor}', [VisitorController::class, 'destroy'])->name('visitor.destroy');
+        Route::post('/visitor/update/{visitor}', [VisitorController::class, 'update'])->name('visitor.update');
+        Route::post('/visitor/delete/{visitor}', [VisitorController::class, 'destroy'])->name('visitor.destroy');
 
         Route::get('/user-admin', [UserAdminController::class, 'index'])->name('user-admin.index');
         Route::post('/user-admin', [UserAdminController::class, 'store'])->name('user-admin.store');
-        Route::post('/user-admin/{user}', [UserAdminController::class, 'update'])->name('user-admin.update');
-        Route::post('/user-admin/{user}', [UserAdminController::class, 'destroy'])->name('user-admin.destroy');
+        Route::post('/user-admin/update/{user}', [UserAdminController::class, 'update'])->name('user-admin.update');
+        Route::post('/user-admin/delete/{user}', [UserAdminController::class, 'destroy'])->name('user-admin.destroy');
     });
 });
