@@ -31,8 +31,8 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
         Route::post('/destinations', [DestinationController::class, 'store'])->name('destinations.store');
-        Route::post('/destinations/{destination}', [DestinationController::class, 'update'])->name('destinations.update');
-        Route::post('/destinations/{destination}', [DestinationController::class, 'destroy'])->name('destinations.destroy');
+        Route::post('/destinations/update/{destination}', [DestinationController::class, 'update'])->name('destinations.update');
+        Route::post('/destinations/delete/{destination}', [DestinationController::class, 'destroy'])->name('destinations.destroy');
 
         Route::get('/visitor', [VisitorController::class, 'index'])->name('visitor.index');
         Route::post('/visitor', [VisitorController::class, 'store'])->name('visitor.store');

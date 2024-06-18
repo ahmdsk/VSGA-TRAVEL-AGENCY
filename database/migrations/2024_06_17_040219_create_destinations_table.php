@@ -17,10 +17,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->integer('price');
-            $table->integer('duration_day');
-            $table->integer('bathrooms')->nullable();
-            $table->integer('bedrooms')->nullable();
-            $table->integer('capacity');
             $table->foreignId('location_id')->constrained('locations');
             $table->timestamps();
         });

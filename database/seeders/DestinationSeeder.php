@@ -17,36 +17,26 @@ class DestinationSeeder extends Seeder
             [
                 'name'  => 'Taman Nasional Bromo Tengger Semeru',
                 'price' => 1000000,
-                'duration_day'  => 3,
-                'capacity'  => 10,
                 'location_id' => 1
             ],
             [
                 'name'  => 'Pantai Kuta',
                 'price' => 500000,
-                'duration_day'  => 2,
-                'capacity'  => 5,
                 'location_id' => 5
             ],
             [
                 'name'  => 'Pantai Sanur',
                 'price' => 400000,
-                'duration_day'  => 2,
-                'capacity'  => 5,
                 'location_id' => 5
             ],
             [
                 'name'  => 'Pantai Lovina',
                 'price' => 300000,
-                'duration_day'  => 2,
-                'capacity'  => 5,
                 'location_id' => 5
             ],
             [
                 'name'  => 'Pantai Pandawa',
                 'price' => 200000,
-                'duration_day'  => 2,
-                'capacity'  => 5,
                 'location_id' => 5
             ],
         ]);

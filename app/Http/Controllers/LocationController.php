@@ -96,20 +96,26 @@ class LocationController extends Controller
 
         $updateLocation = Location::where('id', base64_decode($id))->update($dataUpdate);
 
-        if($updateLocation) {
+        if ($updateLocation) {
             return redirect()->back()->with('success', 'Data lokasi berhasil diubah');
         } else {
             return redirect()->back()->with('error', 'Data lokasi gagal diubah');
         }
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $location = Location::find(base64_decode($id));
-        if(!$location) {
+        if (!$location) {
             return redirect()->back()->with('error', 'Data lokasi tidak ditemukan');
         }
 
+        if ($location->image) {
+            unlink(public_path('images/location/') . '/' . basename($location->image));
+        }
+
         $location->delete();
+
         return redirect()->back()->with('success', 'Data lokasi berhasil dihapus');
     }
 }
