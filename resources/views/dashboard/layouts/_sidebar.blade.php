@@ -29,21 +29,21 @@
                 </li> --}}
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('locations.index') }}" class="waves-effect">
                         <i class="bx bx-map"></i>
                         <span key="t-location">Data Lokasi</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('destinations.index') }}" class="waves-effect">
                         <i class="bx bxs-tree"></i>
                         <span key="t-destinations">Data Destinasi</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('visitor.index') }}" class="waves-effect">
                         <i class="bx bx-user"></i>
                         <span key="t-visitor">Data Pengunjung</span>
                     </a>
@@ -57,7 +57,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('user-admin.index') }}" class="waves-effect">
                         <i class="bx bx-user-check"></i>
                         <span key="t-admin">Data Admin</span>
                     </a>

@@ -9,8 +9,8 @@
                             <div class="row">
                                 <div class="col-7">
                                     <div class="text-primary py-4 px-3">
-                                        <h5 class="text-primary">Selamat datang kembali !</h5>
-                                        <p>Masuk untuk melanjutkan pemesanan.</p>
+                                        <h5 class="text-primary">Selamat datang!</h5>
+                                        <p>Buat akun pertama kamu untuk dapetin akses.</p>
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
@@ -40,8 +40,20 @@
                                 </a>
                             </div>
                             <div class="p-2">
-                                <form class="form-horizontal" action="{{ route('login') }}" method="POST">
+                                <form class="form-horizontal" action="{{ route('register') }}" method="POST">
                                     @csrf
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Nama Lengkap</label>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            id="name" name="name" placeholder="Masukan nama lengkap"
+                                            value="{{ old('name') }}">
+                                        @error('name')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
@@ -59,11 +71,28 @@
                                         <div class="input-group auth-pass-inputgroup">
                                             <input type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
-                                                placeholder="Enter password" name="password" aria-label="Password"
+                                                placeholder="Masukan password" name="password" aria-label="Password"
                                                 aria-describedby="password-addon" value="{{ old('password') }}">
                                             <button class="btn btn-light " type="button" id="password-addon"><i
                                                     class="mdi mdi-eye-outline"></i></button>
                                             @error('password')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Konfimasi Password</label>
+                                        <div class="input-group auth-pass-inputgroup">
+                                            <input type="password"
+                                                class="form-control @error('password_confirmation') is-invalid @enderror"
+                                                placeholder="Masukan konfirmasi password" name="password_confirmation" aria-label="Password"
+                                                aria-describedby="password-addon2" value="{{ old('password_confirmation') }}">
+                                            <button class="btn btn-light " type="button" id="password-addon2"><i
+                                                    class="mdi mdi-eye-outline"></i></button>
+                                            @error('password_confirmation')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
@@ -80,12 +109,7 @@
 
                                     <div class="mt-3 d-grid">
                                         <button class="btn btn-primary waves-effect waves-light"
-                                            type="submit">Masuk</button>
-                                    </div>
-
-                                    <div class="mt-4 text-center">
-                                        <a href="#" class="text-muted"><i class="mdi mdi-lock me-1"></i> Saya lupa
-                                            password?</a>
+                                            type="submit">Daftar</button>
                                     </div>
                                 </form>
                             </div>
@@ -95,8 +119,8 @@
                     <div class="mt-5 text-center">
 
                         <div>
-                            <p>Belum memiliki akun ? <a href="{{ route('register') }}" class="fw-medium text-primary">
-                                    Daftar disini </a> </p>
+                            <p>Sudah memiliki akun ? <a href="{{ route('login') }}" class="fw-medium text-primary">
+                                    Masuk ke Akun </a> </p>
                             <p>©
                                 <script>
                                     document.write(new Date().getFullYear())
