@@ -184,11 +184,7 @@
 @endsection
 @push('script')
     <script>
-        let dataId;
-
         function hapusData(id) {
-            console.log(id)
-
             Swal.fire({
                 icon: "question",
                 title: "Kamu yakin ingin menghapus data ini?",
