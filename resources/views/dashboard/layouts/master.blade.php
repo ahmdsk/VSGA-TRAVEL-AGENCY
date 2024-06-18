@@ -13,6 +13,9 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('template_dashboard/images/favicon.ico') }}">
 
+    <!-- Sweet Alert-->
+    <link href="{{ asset('template_dashboard/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+
     <!-- DataTables -->
     <link href="{{ asset('template_dashboard/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('template_dashboard/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
@@ -95,6 +98,9 @@
     <!-- apexcharts -->
     <script src="{{ asset('template_dashboard/libs/apexcharts/apexcharts.min.js') }}"></script>
 
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('template_dashboard/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+
     <!-- dashboard init -->
     <script src="{{ asset('template_dashboard/js/pages/dashboard.init.js') }}"></script>
 
@@ -106,6 +112,18 @@
             $('#datatable').DataTable();
         });
     </script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire("Berhasil!", "{{ session('success') }}", "success");
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire("Gagal!", "{{ session('error') }}", "error");
+        </script>
+    @endif
 
     @stack('script')
 </body>
