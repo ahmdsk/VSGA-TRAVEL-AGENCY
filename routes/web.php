@@ -12,19 +12,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page.index');
 
-Route::middleware('guest')->group(function() {
+Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'postLogin']);
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'postRegister']);
-
-    Route::post('/booking', [BookingController::class, 'user_booking'])->name('user.booking');
 });
 
-Route::middleware('auth')->group(function() {
+Route::post('/booking', [BookingController::class, 'user_booking'])->name('user.booking');
+
+Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::middleware('admin')->group(function() {
+    Route::get('/booking/history', [BookingController::class, 'history'])->name('booking.history');
+
+    Route::middleware('admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');

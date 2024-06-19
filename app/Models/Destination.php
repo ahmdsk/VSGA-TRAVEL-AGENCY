@@ -20,4 +20,8 @@ class Destination extends Model
     public function location() {
         return $this->belongsTo(Location::class);
     }
+
+    public function bookings() {
+        return $this->hasMany(Booking::class);
+    }
 }

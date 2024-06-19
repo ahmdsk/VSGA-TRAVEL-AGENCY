@@ -1,77 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <title>Jalankuy - Cari Kemudahan Liburan Bersama Keluarga Dengan Pemesanan Secara Online</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Sweet Alert-->
-    <link href="{{ asset('template_dashboard/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" href="{{ asset('template/css/animate.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('template/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('template/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('template/css/magnific-popup.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('template/css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('template/css/jquery.timepicker.css') }}">
-
-
-    <link rel="stylesheet" href="{{ asset('template/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('template/css/style.css') }}">
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('landing-page.index') }}">Jalankuy<span>Travel Agency</span></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto align-items-xl-center">
-                    <li class="nav-item active"><a href="{{ route('landing-page.index') }}" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item"><a href="{{ route('landing-page.index') }}#about" class="nav-link">Tentang</a>
-                    </li>
-                    <li class="nav-item"><a href="{{ route('landing-page.index') }}#destination"
-                            class="nav-link">Destinasi</a></li>
-                    <li class="nav-item"><a href="{{ route('landing-page.index') }}#contact" class="nav-link">Hubungi
-                            Kami</a></li>
-                    @auth
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <button class="btn btn-md btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
-                                    aria-expanded="false">
-                                    {{ auth()->user()->name }}
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
-                                    <form action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item">Keluar</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </li>
-                    @else
-                        <li class="nav-item"><a href="{{ route('login') }}" class="btn btn-md btn-primary">Masuk</a></li>
-                    @endauth
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- END nav -->
-
+@extends('layouts.landing')
+@section('content')
     <div class="hero-wrap js-fullheight" style="background-image: url('{{ asset('template/images/bg_5.jpg') }}');">
         <div class="overlay"></div>
         <div class="container">
@@ -99,11 +27,11 @@
                                 <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist"
                                     aria-orientation="vertical">
                                     <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill"
-                                        href="#v-pills-1" role="tab" aria-controls="v-pills-1"
-                                        aria-selected="true">Cari Destinasi</a>
+                                        href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Cari
+                                        Destinasi</a>
 
                                     {{-- <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
-                                        role="tab" aria-controls="v-pills-2" aria-selected="false">Hotel</a> --}}
+                                    role="tab" aria-controls="v-pills-2" aria-selected="false">Hotel</a> --}}
 
                                 </div>
                             </div>
@@ -153,10 +81,9 @@
                                                         <label for="#">Maks. Harga</label>
                                                         <div class="form-field">
                                                             <div class="select-wrap">
-                                                                <div class="icon"><span
-                                                                        class="fa fa-chevron-down"></span></div>
-                                                                <select name="" id="tour-price"
-                                                                    class="form-control">
+                                                                <div class="icon"><span class="fa fa-chevron-down"></span>
+                                                                </div>
+                                                                <select name="" id="tour-price" class="form-control">
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -175,67 +102,67 @@
                                     </div>
 
                                     {{-- <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
-                                        aria-labelledby="v-pills-performance-tab">
-                                        <form action="#" class="search-property-1">
-                                            <div class="row no-gutters">
-                                                <div class="col-md d-flex">
-                                                    <div class="form-group p-4 border-0">
-                                                        <label for="#">Tujuan</label>
-                                                        <div class="form-field">
-                                                            <div class="icon"><span class="fa fa-search"></span>
-                                                            </div>
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Cari tujuan">
+                                    aria-labelledby="v-pills-performance-tab">
+                                    <form action="#" class="search-property-1">
+                                        <div class="row no-gutters">
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4 border-0">
+                                                    <label for="#">Tujuan</label>
+                                                    <div class="form-field">
+                                                        <div class="icon"><span class="fa fa-search"></span>
                                                         </div>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Cari tujuan">
                                                     </div>
                                                 </div>
-                                                <div class="col-md d-flex">
-                                                    <div class="form-group p-4">
-                                                        <label for="#">Tanggal Check-in</label>
-                                                        <div class="form-field">
-                                                            <div class="icon"><span class="fa fa-calendar"></span>
-                                                            </div>
-                                                            <input type="text" class="form-control checkin_date"
-                                                                placeholder="Tanggal Check In">
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Tanggal Check-in</label>
+                                                    <div class="form-field">
+                                                        <div class="icon"><span class="fa fa-calendar"></span>
                                                         </div>
+                                                        <input type="text" class="form-control checkin_date"
+                                                            placeholder="Tanggal Check In">
                                                     </div>
                                                 </div>
-                                                <div class="col-md d-flex">
-                                                    <div class="form-group p-4">
-                                                        <label for="#">Tanggal Check-out</label>
-                                                        <div class="form-field">
-                                                            <div class="icon"><span class="fa fa-calendar"></span>
-                                                            </div>
-                                                            <input type="text" class="form-control checkout_date"
-                                                                placeholder="CTanggal heck Out">
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Tanggal Check-out</label>
+                                                    <div class="form-field">
+                                                        <div class="icon"><span class="fa fa-calendar"></span>
                                                         </div>
+                                                        <input type="text" class="form-control checkout_date"
+                                                            placeholder="CTanggal heck Out">
                                                     </div>
                                                 </div>
-                                                <div class="col-md d-flex">
-                                                    <div class="form-group p-4">
-                                                        <label for="#">Maks. Harga</label>
-                                                        <div class="form-field">
-                                                            <div class="select-wrap">
-                                                                <div class="icon"><span
-                                                                        class="fa fa-chevron-down"></span></div>
-                                                                <select name="" id="hotel-price"
-                                                                    class="form-control">
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md d-flex">
-                                                    <div class="form-group d-flex w-100 border-0">
-                                                        <div class="form-field w-100 align-items-center d-flex">
-                                                            <input type="submit" value="Search"
-                                                                class="align-self-stretch form-control btn btn-primary">
+                                            </div>
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Maks. Harga</label>
+                                                    <div class="form-field">
+                                                        <div class="select-wrap">
+                                                            <div class="icon"><span
+                                                                    class="fa fa-chevron-down"></span></div>
+                                                            <select name="" id="hotel-price"
+                                                                class="form-control">
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div> --}}
+                                            <div class="col-md d-flex">
+                                                <div class="form-group d-flex w-100 border-0">
+                                                    <div class="form-field w-100 align-items-center d-flex">
+                                                        <input type="submit" value="Search"
+                                                            class="align-self-stretch form-control btn btn-primary">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -348,12 +275,13 @@
                                 {{-- p desc max 100 text --}}
                                 <p>{{ Str::limit($destination->description, 100) }}</p>
                                 {{-- <ul>
-                                    <li><span class="flaticon-shower"></span>2</li>
-                                    <li><span class="flaticon-king-size"></span>3</li>
-                                    <li><span class="flaticon-mountains"></span>Near Mountain</li>
-                                </ul> --}}
+                                <li><span class="flaticon-shower"></span>2</li>
+                                <li><span class="flaticon-king-size"></span>3</li>
+                                <li><span class="flaticon-mountains"></span>Near Mountain</li>
+                            </ul> --}}
                                 <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn btn-primary" onclick="openBookingModal('{{ $destination }}')">
+                                    <button type="button" class="btn btn-primary"
+                                        onclick="openBookingModal('{{ $destination }}')">
                                         Pesan
                                     </button>
                                 </div>
@@ -385,86 +313,8 @@
         </div>
     </section>
 
-    <footer class="ftco-footer bg-bottom ftco-no-pt" id="contact"
-        style="background-image: url('{{ asset('template/images/bg_3.jpg') }}');">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md pt-5">
-                    <div class="ftco-footer-widget pt-md-5 mb-4">
-                        <h2 class="ftco-heading-2">Tentang</h2>
-                        <p>Jauh sekali, di balik kata pegunungan, jauh dari negeri Vokalia dan Konsonantia, hiduplah
-                            teks-teks buta.</p>
-                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-                            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md pt-5 border-left">
-                    <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2">Informasi</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Pertanyaan Daring</a></li>
-                            <li><a href="#" class="py-2 d-block">Pertanyaan Umum</a></li>
-                            <li><a href="#" class="py-2 d-block">Ketentuan Pemesanan</a></li>
-                            <li><a href="#" class="py-2 d-block">Privasi dan Kebijakan</a></li>
-                            <li><a href="#" class="py-2 d-block">Kebijakan pengembalian</a></li>
-                            <li><a href="#" class="py-2 d-block">Hubungi Kami</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md pt-5 border-left">
-                    <div class="ftco-footer-widget pt-md-5 mb-4">
-                        <h2 class="ftco-heading-2">Pengalaman</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Petualangan</a></li>
-                            <li><a href="#" class="py-2 d-block">Hotel dan Restoran</a></li>
-                            <li><a href="#" class="py-2 d-block">Pantai</a></li>
-                            <li><a href="#" class="py-2 d-block">Alam</a></li>
-                            <li><a href="#" class="py-2 d-block">Berkemah</a></li>
-                            <li><a href="#" class="py-2 d-block">Pesta</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md pt-5 border-left">
-                    <div class="ftco-footer-widget pt-md-5 mb-4">
-                        <h2 class="ftco-heading-2">Punya pertanyaan?</h2>
-                        <div class="block-23 mb-3">
-                            <ul>
-                                <li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St.
-                                        Mountain View, San Francisco, California, USA</span></li>
-                                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2
-                                            392 3929 210</span></a></li>
-                                <li><a href="#"><span class="icon fa fa-paper-plane"></span><span
-                                            class="text">info@yourdomain.com</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script> All rights reserved
-                        {{-- | This template is made with  --}}
-                        {{-- <i
-                            class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                            target="_blank">Colorlib</a> --}}
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <!-- Modal Pesan (Booking) -->
-    <div class="modal fade" id="bookingModal" tabindex="-1"
-        aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
@@ -474,26 +324,28 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('user.booking') }}" method="post">
+                <form action="{{ route('user.booking') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="id_destinasi_pesan" id="id_destinasi_pesan">
                     <div class="modal-body">
-                        <div class="row">
-                            <input type="hidden" name="id_destinasi_pesan" id="id_destinasi_pesan">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="fullname">Nama Pengunjung</label>
-                                    <input type="text" class="form-control" id="fullname" name="fullname"
-                                        placeholder="Masukan nama lengkap pengunjung">
+                        @guest
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fullname">Nama Pengunjung</label>
+                                        <input type="text" class="form-control" id="fullname" name="fullname"
+                                            placeholder="Masukan nama lengkap pengunjung">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="Masukan email pengunjung">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="Masukan email pengunjung">
-                                </div>
-                            </div>
-                        </div>
+                        @endguest
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -521,9 +373,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="total_harga_penginap">Harga/Pengunjung</label>
-                                    <input type="number" class="form-control"
-                                        id="total_harga_pengunjung" placeholder="Harga/Pengunjung" name="total_harga_pengunjung"
-                                        readonly>
+                                    <input type="number" class="form-control" id="total_harga_pengunjung"
+                                        placeholder="Harga/Pengunjung" name="total_harga_pengunjung" readonly>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -536,56 +387,15 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
-                            data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Lanjut</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-                stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-                stroke-miterlimit="10" stroke="#F96D00" />
-        </svg>
-    </div>
-
-
-    <script src="{{ asset('template/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('template/js/jquery-migrate-3.0.1.min.js') }}"></script>
-    <script src="{{ asset('template/js/popper.min.js') }}"></script>
-    <script src="{{ asset('template/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('template/js/jquery.easing.1.3.js') }}"></script>
-    <script src="{{ asset('template/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('template/js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ asset('template/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('template/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('template/js/jquery.animateNumber.min.js') }}"></script>
-    <script src="{{ asset('template/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('template/js/scrollax.min.js') }}"></script>
-    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> --}}
-    {{-- <script src="{{ asset('template/js/google-map.js') }}"></script> --}}
-    <script src="{{ asset('template/js/main.js') }}"></script>
-
-    <!-- Sweet Alerts js -->
-    <script src="{{ asset('template_dashboard/libs/sweetalert2/sweetalert2.min.js') }}"></script>
-
-    @if (session('success'))
-        <script>
-            Swal.fire("Berhasil!", "{{ session('success') }}", "success");
-        </script>
-    @endif
-
-    @if (session('error'))
-        <script>
-            Swal.fire("Gagal!", "{{ session('error') }}", "error");
-        </script>
-    @endif
-
+@endsection
+@push('script')
     <script>
         const listMaksHarga = [
             1000000,
@@ -606,10 +416,10 @@
             const option = document.createElement('option');
             option.value = harga;
             option.text = `${new Intl.NumberFormat('ID', {
-                style: 'currency',
-                currency: 'IDR',
-                maximumSignificantDigits: 2
-            }).format(harga)}`;
+            style: 'currency',
+            currency: 'IDR',
+            maximumSignificantDigits: 2
+        }).format(harga)}`;
             tourPrice.appendChild(option);
             // hotelPrice.appendChild(option.cloneNode(true));
         });
@@ -617,17 +427,11 @@
 
     <script>
         $(document).ready(function() {
-            // read url_video.json
-            $.getJSON("{{ asset('json/url_video.json') }}", function(data) {
-                // set video url
-                $('#video-hero-section').attr('href', data.url);
-            });
-
             // Get Total Harga * Total Pengunjung = Total Harga
             $('#total_guests').on('input', function() {
                 const totalGuests = $(this).val();
 
-                if(totalGuests <= 0) {
+                if (totalGuests <= 0) {
                     $('#total_price').val(0);
                     return;
                 }
@@ -643,11 +447,10 @@
             $('#bookingModalLabel').text(`Pesan Destinasi ${data.name}`);
             $('#bookingModal').modal('show');
 
+            console.log("Destinasi: ", data);
+
             $('#total_harga_pengunjung').val(data.price);
             $('#id_destinasi_pesan').val(data.id);
         }
     </script>
-
-</body>
-
-</html>
+@endpush
