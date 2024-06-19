@@ -50,7 +50,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('booking.index') }}" class="waves-effect">
                         <i class="bx bx-bed"></i>
                         <span key="t-orders">Data Pesanan</span>
                     </a>

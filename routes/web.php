@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ManagementBookingController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
@@ -48,5 +49,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/user-admin', [UserAdminController::class, 'store'])->name('user-admin.store');
         Route::post('/user-admin/update/{user}', [UserAdminController::class, 'update'])->name('user-admin.update');
         Route::post('/user-admin/delete/{user}', [UserAdminController::class, 'destroy'])->name('user-admin.destroy');
+
+        Route::get('/booking', [ManagementBookingController::class, 'index'])->name('booking.index');
+        Route::post('/booking/confirm', [ManagementBookingController::class, 'confirm'])->name('booking.confirm');
     });
 });
