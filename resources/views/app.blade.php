@@ -11,6 +11,9 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Sweet Alert-->
+    <link href="{{ asset('template_dashboard/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" href="{{ asset('template/css/animate.css') }}">
 
     <link rel="stylesheet" href="{{ asset('template/css/owl.carousel.min.css') }}">
@@ -61,8 +64,7 @@
                             </div>
                         </li>
                     @else
-                        <li class="nav-item"><a href="{{ route('login') }}"
-                                class="btn btn-md btn-primary">Masuk</a></li>
+                        <li class="nav-item"><a href="{{ route('login') }}" class="btn btn-md btn-primary">Masuk</a></li>
                     @endauth
                 </ul>
             </div>
@@ -79,7 +81,7 @@
                     <h1 class="mb-4">Temukan Tempat Favorit Anda bersama Kami</h1>
                     <p class="caps">Bepergian ke sudut mana pun di dunia, tanpa berputar-putar</p>
                 </div>
-                <a href="https://vimeo.com/494305035"
+                <a href="#" id="video-hero-section"
                     class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
                     <span class="fa fa-play"></span>
                 </a>
@@ -100,8 +102,8 @@
                                         href="#v-pills-1" role="tab" aria-controls="v-pills-1"
                                         aria-selected="true">Cari Destinasi</a>
 
-                                    <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
-                                        role="tab" aria-controls="v-pills-2" aria-selected="false">Hotel</a>
+                                    {{-- <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
+                                        role="tab" aria-controls="v-pills-2" aria-selected="false">Hotel</a> --}}
 
                                 </div>
                             </div>
@@ -142,7 +144,7 @@
                                                             <div class="icon"><span class="fa fa-calendar"></span>
                                                             </div>
                                                             <input type="text" class="form-control checkout_date"
-                                                                placeholder="CTanggal heck Out">
+                                                                placeholder="Tanggal Check Out">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -172,7 +174,7 @@
                                         </form>
                                     </div>
 
-                                    <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
+                                    {{-- <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
                                         aria-labelledby="v-pills-performance-tab">
                                         <form action="#" class="search-property-1">
                                             <div class="row no-gutters">
@@ -233,7 +235,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -328,115 +330,41 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img"
-                            style="background-image: url('{{ asset('template/images/destination-1.jpg') }}');">
-                            <span class="price">$550/person</span>
-                        </a>
-                        <div class="text p-4">
-                            <span class="days">8 Days Tour</span>
-                            <h3><a href="#">Banaue Rice Terraces</a></h3>
-                            <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                            <ul>
-                                <li><span class="flaticon-shower"></span>2</li>
-                                <li><span class="flaticon-king-size"></span>3</li>
-                                <li><span class="flaticon-mountains"></span>Near Mountain</li>
-                            </ul>
+                @forelse ($destinations as $destination)
+                    <div class="col-md-4 ftco-animate">
+                        <div class="project-wrap">
+                            <a href="#" class="img"
+                                style="background-image: url('{{ $destination->image ?? asset('template/images/destination-2.jpg') }}');">
+                                <span class="price">
+                                    @currency($destination->price)
+                                </span>
+                            </a>
+                            <div class="text p-4">
+                                {{-- <span class="days">8 Days Tour</span> --}}
+                                <h3><a href="#">{{ $destination->name }}</a></h3>
+                                <p class="location"><span class="fa fa-map-marker"></span>
+                                    {{ $destination->location->name }}
+                                </p>
+                                {{-- p desc max 100 text --}}
+                                <p>{{ Str::limit($destination->description, 100) }}</p>
+                                {{-- <ul>
+                                    <li><span class="flaticon-shower"></span>2</li>
+                                    <li><span class="flaticon-king-size"></span>3</li>
+                                    <li><span class="flaticon-mountains"></span>Near Mountain</li>
+                                </ul> --}}
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-primary" onclick="openBookingModal('{{ $destination }}')">
+                                        Pesan
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img"
-                            style="background-image: url('{{ asset('template/images/destination-2.jpg') }}');">
-                            <span class="price">$550/person</span>
-                        </a>
-                        <div class="text p-4">
-                            <span class="days">10 Days Tour</span>
-                            <h3><a href="#">Banaue Rice Terraces</a></h3>
-                            <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                            <ul>
-                                <li><span class="flaticon-shower"></span>2</li>
-                                <li><span class="flaticon-king-size"></span>3</li>
-                                <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                            </ul>
-                        </div>
+                @empty
+                    <div class="col-md-12 text-center">
+                        <h3>Belum ada destinasi yang tersedia</h3>
                     </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img"
-                            style="background-image: url('{{ asset('template/images/destination-3.jpg') }}');">
-                            <span class="price">$550/person</span>
-                        </a>
-                        <div class="text p-4">
-                            <span class="days">7 Days Tour</span>
-                            <h3><a href="#">Banaue Rice Terraces</a></h3>
-                            <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                            <ul>
-                                <li><span class="flaticon-shower"></span>2</li>
-                                <li><span class="flaticon-king-size"></span>3</li>
-                                <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img"
-                            style="background-image: url('{{ asset('template/images/destination-4.jpg') }}');">
-                            <span class="price">$550/person</span>
-                        </a>
-                        <div class="text p-4">
-                            <span class="days">8 Days Tour</span>
-                            <h3><a href="#">Banaue Rice Terraces</a></h3>
-                            <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                            <ul>
-                                <li><span class="flaticon-shower"></span>2</li>
-                                <li><span class="flaticon-king-size"></span>3</li>
-                                <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img"
-                            style="background-image: url('{{ asset('template/images/destination-5.jpg') }}');">
-                            <span class="price">$550/person</span>
-                        </a>
-                        <div class="text p-4">
-                            <span class="days">10 Days Tour</span>
-                            <h3><a href="#">Banaue Rice Terraces</a></h3>
-                            <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                            <ul>
-                                <li><span class="flaticon-shower"></span>2</li>
-                                <li><span class="flaticon-king-size"></span>3</li>
-                                <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img"
-                            style="background-image: url('{{ asset('template/images/destination-6.jpg') }}');">
-                            <span class="price">$550/person</span>
-                        </a>
-                        <div class="text p-4">
-                            <span class="days">7 Days Tour</span>
-                            <h3><a href="#">Banaue Rice Terraces</a></h3>
-                            <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                            <ul>
-                                <li><span class="flaticon-shower"></span>2</li>
-                                <li><span class="flaticon-king-size"></span>3</li>
-                                <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -534,7 +462,88 @@
         </div>
     </footer>
 
-
+    <!-- Modal Pesan (Booking) -->
+    <div class="modal fade" id="bookingModal" tabindex="-1"
+        aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingModalLabel">Pesan Destinasi
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('user.booking') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <input type="hidden" name="id_destinasi_pesan" id="id_destinasi_pesan">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fullname">Nama Pengunjung</label>
+                                    <input type="text" class="form-control" id="fullname" name="fullname"
+                                        placeholder="Masukan nama lengkap pengunjung">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Masukan email pengunjung">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="check_in">Tanggal Check In</label>
+                                    <input type="date" class="form-control" id="check_in" name="check_in"
+                                        placeholder="Masukan Tanggal Check In">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="check_out">Tanggal Check Out</label>
+                                    <input type="date" class="form-control" id="check_out" name="check_out"
+                                        placeholder="Masukan Tanggal Check Out">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="total_guests">Total Pengunjung</label>
+                                    <input type="number" class="form-control" id="total_guests" name="total_guests"
+                                        placeholder="Masukan Total Pengunjung">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="total_harga_penginap">Harga/Pengunjung</label>
+                                    <input type="number" class="form-control"
+                                        id="total_harga_pengunjung" placeholder="Harga/Pengunjung" name="total_harga_pengunjung"
+                                        readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="total_price">Total Harga</label>
+                                    <input type="number" class="form-control" id="total_price" name="total_price"
+                                        placeholder="Total Harga" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Lanjut</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -542,7 +551,8 @@
                 stroke="#eeeeee" />
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
                 stroke-miterlimit="10" stroke="#F96D00" />
-        </svg></div>
+        </svg>
+    </div>
 
 
     <script src="{{ asset('template/js/jquery.min.js') }}"></script>
@@ -561,6 +571,21 @@
     {{-- <script src="{{ asset('template/js/google-map.js') }}"></script> --}}
     <script src="{{ asset('template/js/main.js') }}"></script>
 
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('template_dashboard/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire("Berhasil!", "{{ session('success') }}", "success");
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire("Gagal!", "{{ session('error') }}", "error");
+        </script>
+    @endif
+
     <script>
         const listMaksHarga = [
             1000000,
@@ -576,7 +601,7 @@
         ];
 
         const tourPrice = document.getElementById('tour-price');
-        const hotelPrice = document.getElementById('hotel-price');
+        // const hotelPrice = document.getElementById('hotel-price');
         listMaksHarga.forEach(harga => {
             const option = document.createElement('option');
             option.value = harga;
@@ -586,8 +611,41 @@
                 maximumSignificantDigits: 2
             }).format(harga)}`;
             tourPrice.appendChild(option);
-            hotelPrice.appendChild(option.cloneNode(true));
+            // hotelPrice.appendChild(option.cloneNode(true));
         });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // read url_video.json
+            $.getJSON("{{ asset('json/url_video.json') }}", function(data) {
+                // set video url
+                $('#video-hero-section').attr('href', data.url);
+            });
+
+            // Get Total Harga * Total Pengunjung = Total Harga
+            $('#total_guests').on('input', function() {
+                const totalGuests = $(this).val();
+
+                if(totalGuests <= 0) {
+                    $('#total_price').val(0);
+                    return;
+                }
+
+                const totalHargaPengunjung = $('#total_harga_pengunjung').val();
+                const totalHarga = totalGuests * totalHargaPengunjung;
+                $('#total_price').val(totalHarga);
+            });
+        });
+
+        function openBookingModal(destination) {
+            const data = JSON.parse(destination);
+            $('#bookingModalLabel').text(`Pesan Destinasi ${data.name}`);
+            $('#bookingModal').modal('show');
+
+            $('#total_harga_pengunjung').val(data.price);
+            $('#id_destinasi_pesan').val(data.id);
+        }
     </script>
 
 </body>

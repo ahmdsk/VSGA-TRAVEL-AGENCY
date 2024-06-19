@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\LandingPageController;
@@ -16,6 +17,8 @@ Route::middleware('guest')->group(function() {
     Route::post('/login', [AuthController::class, 'postLogin']);
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'postRegister']);
+
+    Route::post('/booking', [BookingController::class, 'user_booking'])->name('user.booking');
 });
 
 Route::middleware('auth')->group(function() {

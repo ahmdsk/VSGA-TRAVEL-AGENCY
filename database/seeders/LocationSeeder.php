@@ -15,23 +15,23 @@ class LocationSeeder extends Seeder
     {
         Location::insert([
             [
-                'name' => 'Jakarta',
+                'name' => 'Jakarta, Indonesia',
                 'description' => 'Ibu Kota Negara'
             ],
             [
-                'name' => 'Bandung',
+                'name' => 'Bandung, Indonesia',
                 'description' => 'Kota Kembang'
             ],
             [
-                'name' => 'Surabaya',
+                'name' => 'Surabaya, Indonesia',
                 'description' => 'Kota Pahlawan'
             ],
             [
-                'name' => 'Yogyakarta',
+                'name' => 'Yogyakarta, Indonesia',
                 'description' => 'Kota Pelajar'
             ],
             [
-                'name' => 'Bali',
+                'name' => 'Bali, Indonesia',
                 'description' => 'Pulau Dewata'
             ],
         ]);

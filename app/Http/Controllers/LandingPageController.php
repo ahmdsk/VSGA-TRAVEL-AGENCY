@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Destination;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
     public function index()
     {
-        return view('app');
+        $data['destinations'] = Destination::with(['location'])->get();
+
+        return view('app', $data);
     }
 }
